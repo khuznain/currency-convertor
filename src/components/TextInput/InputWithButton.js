@@ -20,6 +20,7 @@ const InputWithButton = props => {
       <TouchableHighlight
         underlayColor={underlayColor}
         style={styles.buttonContainer}
+        onPress={onPress}
       >
         <Text style={styles.buttonText}>{buttonText}</Text>
       </TouchableHighlight>
