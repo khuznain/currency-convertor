@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ScrollView, StatusBar, Platform } from "react-native";
+import { ScrollView, StatusBar, Platform, Linking } from "react-native";
 
 import { ListItem, Separator } from "../components/List";
 
@@ -9,10 +9,10 @@ import { ListItem, Separator } from "../components/List";
 
 class Options extends Component {
   handleThemePress = () => {
-    console.log("working..");
+    this.props.navigation.navigate("Themes");
   };
   handleSitePress = () => {
-    console.log("working..");
+    Linking.openURL("http://fixer.io").catch(() => alert("An error occured"));
   };
 
   render() {
