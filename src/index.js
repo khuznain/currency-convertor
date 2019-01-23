@@ -1,7 +1,9 @@
 import React from "react";
 import EStyleSheet from "react-native-extended-stylesheet";
+import { Provider } from "react-redux";
 
 import Navigator from "./config/routes";
+import store from "./redux/store";
 
 EStyleSheet.build({
   $primaryBlue: "#4f6D7A",
@@ -16,4 +18,8 @@ EStyleSheet.build({
   $darkText: "#343434"
 });
 
-export default () => <Navigator />;
+export default () => (
+  <Provider store={store}>
+    <Navigator />
+  </Provider>
+);
