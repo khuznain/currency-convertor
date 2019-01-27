@@ -1,19 +1,24 @@
 import React, { Component } from "react";
+import { KeyboardAvoidingView, StatusBar } from "react-native";
 import { connect } from "react-redux";
-import { StatusBar, KeyboardAvoidingView } from "react-native";
-import { Container } from "../components/container";
-import { Logo } from "../components/Logo";
-import { InputWithButton } from "../components/TextInput";
 import { ClearButton } from "../components/Button";
-import { LastConverted } from "../components/Text";
+import { Container } from "../components/container";
 import { Header } from "../components/Header";
+import { Logo } from "../components/Logo";
+import { LastConverted } from "../components/Text";
+import { InputWithButton } from "../components/TextInput";
 import {
-  swapCurrency,
-  changeCurrencyAmount
+  changeCurrencyAmount,
+  getInitialConversion,
+  swapCurrency
 } from "../redux/actions/currencies";
 
 class Home extends Component {
   state = {};
+
+  componentWillMount() {
+    this.props.getInitialConversion();
+  }
 
   handleTextChange = text => {
     this.props.changeCurrencyAmount(text);
@@ -106,5 +111,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { swapCurrency, changeCurrencyAmount }
+  { swapCurrency, changeCurrencyAmount, getInitialConversion }
 )(Home);
